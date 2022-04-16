@@ -1,3 +1,5 @@
+##Modification by @sakku_cute
+
 import json
 import math
 import os
@@ -30,8 +32,9 @@ from .logger import logging
 LOGS = logging.getLogger(__name__)
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-MEDIA_PATH_REGEX = re.compile(r"(:?\<\bmedia:(:?(?:.*?)+)\>)")
-CATLOGO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+CATLOGO = (
+    gvarstatus("INLINE_PIC") or "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+)
 tr = Config.COMMAND_HAND_LER
 
 
@@ -251,7 +254,31 @@ async def inline_handler(event):  # sourcery no-metrics
         match2 = re.findall(inf, query)
         hid = re.compile("hide (.*)")
         match3 = re.findall(hid, query)
-        if query.startswith("**Catuserbot"):
+        if query.startswith("ping"):
+            txt = f" *Ping* {mention} *"
+            button = [(Button.inline("Check", data="ping"))]
+            PIC = random.choice(gvarstatus("PING_PICS").split())
+            if PIC and PIC.endswith((".jpg", ".jpeg", ".png")):  # fk it im adding
+                result = builder.photo(
+                    PIC,
+                    text=txt,
+                    buttons=button,
+                )
+            elif PIC:
+                result = builder.document(
+                    PIC,
+                    title="Check Ping",
+                    text=txt,
+                    buttons=button,
+                )
+            else:
+                result = builder.article(
+                    title="Check Ping",
+                    text=txt,
+                    buttons=button,
+                )
+            await event.answer([result] if result else None)
+        elif query.startswith("**Catuserbot"):
             buttons = [
                 (
                     Button.inline("Stats", data="stats"),
@@ -465,15 +492,23 @@ async def inline_handler(event):  # sourcery no-metrics
                 json.dump(jsondata, open(hide, "w"))
             else:
                 json.dump(newhide, open(hide, "w"))
-        elif string == "help":
+        elif string == ("help" or ""):
             _result = main_menu()
-            result = builder.article(
-                title="© CatUserbot Help",
-                description="Help menu for CatUserbot",
-                text=_result[0],
-                buttons=_result[1],
-                link_preview=False,
-            )
+             HELP_PIC = gvarstatus("HELP_PIC")
+            if HELP_PIC and HELP_PIC.endswith((".jpg", ".jpeg", ".png")):
+                result = builder.photo(
+                    HELP_PIC,
+                    # title=" Help Menu",
+                    text=_result[0],
+                    buttons=_result[1],
+                )
+            elif HELP_PIC:
+                result = builder.document(
+                    HELP_PIC,
+                    title="Help Menu",
+                    text=_result[0],
+                    buttons=_result[1],
+                )
             await event.answer([result] if result else None)
         elif str_y[0].lower() == "ytdl" and len(str_y) == 2:
             link = get_yt_video_id(str_y[1].strip())
