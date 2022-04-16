@@ -23,6 +23,14 @@ bot = catub
 LOGS = logging.getLogger(__name__)
 USERID = catub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 ALIVE_NAME = Config.ALIVE_NAME
+AUTONAME = Config.AUTONAME
+DEFAULT_BIO = Config.DEFAULT_BIO
+eor = edit_or_reply
+eod = edit_delete
+THUMB_IMAGE = (
+    gvarstatus("THUMB_IMAGE") or "https://telegra.ph/file/562f225766ef9af2735c5.jpg"
+)
+
 
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
@@ -57,8 +65,8 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
 
 
 # thumb image
-if Config.THUMB_IMAGE is not None:
-    check = url(Config.THUMB_IMAGE)
+if THUMB_IMAGE is not None:
+    check = url(THUMB_IMAGE)
     if check:
         try:
             with open(thumb_image_path, "wb") as f:
