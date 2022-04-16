@@ -1,15 +1,19 @@
 aiofiles
+akinator.py
 aiohttp
 apscheduler
 cairosvg
 cloudscraper
 colour
+countryinfo
 covid
 cowpy
 dataclasses
 DateTime
 emoji
 fonttools
+fake_useragent
+emoji-country-flag
 geopy
 gitpython
 glitch_this
@@ -19,6 +23,7 @@ google-auth-oauthlib
 gtts
 hachoir
 heroku3
+hentai
 html-telegraph-poster
 httpx[http2]
 humanize
@@ -38,6 +43,7 @@ prettytable
 psutil
 psycopg2
 pyfiglet
+pyDictionary
 PyGithub
 pygments
 pylast
@@ -47,7 +53,11 @@ pySmartDL
 python-barcode
 python-dotenv
 pytz
+pokedex.py
+pornhub_api
+pornhubapi
 qrcode
+quotefancy
 randomstuff.py
 regex
 requests
@@ -66,6 +76,9 @@ urlextract
 validators
 vcsi
 wand
+webpage2telegraph==2021.7.14
+scipy
+wordcloud
 wget
 yt_dlp
 
