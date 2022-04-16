@@ -16,6 +16,7 @@ cmdhd = Config.COMMAND_HAND_LER
 
 extractor = URLExtract()
 vlist = [
+    "ALIVE_CHANNEL",
     "ALIVE_PIC",
     "ALIVE_EMOJI",
     "ALIVE_TEMPLATE",
@@ -29,20 +30,27 @@ vlist = [
     "DIGITAL_PIC",
     "FIRST_NAME",
     "HELP_EMOJI",
+    "HELP_PIC",
     "HELP_TEXT",
     "IALIVE_PIC",
-    "LAST_NAME",
+    "INLINE_PIC",
+    "LOG_LIVE",
     "PING_PIC",
+    "PING_PICS",
+    "PING_TEXT",
+    "LAST_NAME",
     "PING_TEMPLATE",
     "PM_PIC",
     "PM_TEXT",
     "PM_BLOCK",
     "MAX_FLOOD_IN_PMS",
     "START_TEXT",
+    "THUMB_IMAGE",
     "BOT_START_PIC",
     "NO_OF_ROWS_IN_HELP",
     "NO_OF_COLUMNS_IN_HELP",
     "CUSTOM_STICKER_PACKNAME",
+    "PUBLIC_CHANNEL_ID", 
 ]
 
 oldvars = {
