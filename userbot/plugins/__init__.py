@@ -23,8 +23,6 @@ bot = catub
 LOGS = logging.getLogger(__name__)
 USERID = catub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 ALIVE_NAME = Config.ALIVE_NAME
-AUTONAME = Config.AUTONAME
-DEFAULT_BIO = Config.DEFAULT_BIO
 eor = edit_or_reply
 eod = edit_delete
 THUMB_IMAGE = (
