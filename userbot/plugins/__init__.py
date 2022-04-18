@@ -39,15 +39,21 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
+USERID = catub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+
 # mention user
-mention = f"[{Config.ALIVE_NAME}](tg://user?id={USERID})"
-hmention = f"<a href = tg://user?id={USERID}>{Config.ALIVE_NAME}</a>"
+mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
+hmention = f"<a href = tg://user?id={USERID}>{ALIVE_NAME}</a>"
 
 PM_START = []
 PMMESSAGE_CACHE = {}
 PMMENU = "pmpermit_menu" not in Config.NO_LOAD
 
 # Gdrive
+G_DRIVE_CLIENT_ID = Config.G_DRIVE_CLIENT_ID
+G_DRIVE_CLIENT_SECRET = Config.G_DRIVE_CLIENT_SECRET
+G_DRIVE_DATA = Config.G_DRIVE_DATA
+G_DRIVE_FOLDER_ID = Config.G_DRIVE_FOLDER_ID
 TMP_DOWNLOAD_DIRECTORY = Config.TMP_DOWNLOAD_DIRECTORY
 
 # spamwatch support
@@ -70,7 +76,7 @@ if THUMB_IMAGE is not None:
     if check:
         try:
             with open(thumb_image_path, "wb") as f:
-                f.write(requests.get(Config.THUMB_IMAGE).content)
+                f.write(requests.get(THUMB_IMAGE).content)
         except Exception as e:
             LOGS.info(str(e))
 
