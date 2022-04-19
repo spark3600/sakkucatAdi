@@ -1,5 +1,5 @@
-# Created by @sakshi
-an7509
+# Created by @Jisan
+
 import requests
 
 from ..core.managers import edit_delete, edit_or_reply
