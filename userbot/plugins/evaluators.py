@@ -4,7 +4,7 @@ import os
 import sys
 import traceback
 
-from ..helpers.utils import _format, json_parser
+from ..helpers.utils import _format
 from . import *
 
 plugin_category = "tools"
