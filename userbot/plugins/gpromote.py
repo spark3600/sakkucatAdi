@@ -1,3 +1,5 @@
+#By @sakku_cute
+
 from telethon.errors.rpcerrorlist import (UserIdInvalidError,
                                             MessageTooLongError)
 from telethon.tl.functions.channels import (EditAdminRequest,
@@ -62,7 +64,8 @@ async def get_user_from_id(user, event):
     pattern="gpromote$",
     command=("gpromote", plugin_category),
     info={
-        "header": "GPROMOTE",
+        "header": "To promote user in every group where you are admin.",
+        "description": "Will promote the person in every group where you are admin.",
         "usage": [
             "{tr}gpromote",
         ],
@@ -121,7 +124,8 @@ async def gben(userbot):
     pattern="gdemote$",
     command=("gdemote", plugin_category),
     info={
-        "header": "gdemote",
+        "header": "To demote user in that group where you promote person to admin.",
+        "description": "Will demote the person in that group where you promote person to admin",
         "usage": [
             "{tr}gdemote",
         ],
