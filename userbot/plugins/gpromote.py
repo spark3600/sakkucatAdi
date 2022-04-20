@@ -97,8 +97,8 @@ async def get_user_from_id(user, event):
     info={
         "header": "To promote user in every group where you are admin(have a right to promote).",
         "description": "Will promote the person in every group where you are admin(have a right to promote).",
-        "usage": 
-             "{tr}gpromote <username/reply/userid> <reason (optional)>",
+        "usage": [
+            "{tr}gpromote <username/reply/userid> <reason (optional)>",
         ],
     },
 )
@@ -165,7 +165,7 @@ async def _(catevent):
     info={
         "header": "To demote user in that group where you promote person to admin.",
         "description": "Will demote the person in that group where you promote person to admin",
-        "usage": 
+        "usage": [
             "{tr}gdemote <username/reply/userid> <reason (optional)>",
         ],
     },
