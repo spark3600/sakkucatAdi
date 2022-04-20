@@ -1,4 +1,4 @@
-#By @sakku_cut
+#By @sakku_cute
 
 from telethon.errors.rpcerrorlist import (UserIdInvalidError,
                                             MessageTooLongError)
