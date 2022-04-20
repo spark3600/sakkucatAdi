@@ -102,35 +102,35 @@ async def get_user_from_id(user, event):
         ],
     },
 )
-async def _(catevent):
+async def _(event):
     i = 0
-    await catevent.get_sender()
-    me = await catevent.client.get_me()
-    cat = await eor(catevent, "`Promoting globally...`")
+    await event.get_sender()
+    me = await event.client.get_me()
+    event = await eor(event, "`Promoting globally...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await catevent.get_chat()
-    if catevent.is_private:
-        user = catevent.chat
-        rank = catevent.pattern_match.group(1)
+    await event.get_chat()
+    if event.is_private:
+        user = event.chat
+        rank = event.pattern_match.group(1)
     else:
-        catevent.chat.title
+        event.chat.title
     try:
-        user, rank = await get_full_user(catevent)
+        user, rank = await get_full_user(event)
     except:
         pass
     if me == user:
-        await cat.edit("You can't promote yourself...")
+        await event.edit("You can't promote yourself...")
         return
     try:
         if not rank:
-            rank = "Cat"
+            rank = "event"
     except:
-        return await cat.edit("**ERROR !!**")
+        return await event.edit("**ERROR !!**")
     if user:
         telchanel = [
             d.entity.id
-            for d in await catevent.client.get_dialogs()
+            for d in await event.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         rgt = ChatAdminRights(
@@ -143,17 +143,17 @@ async def _(catevent):
         )
         for x in telchanel:
             try:
-                await catevent.client(EditAdminRequest(x, user, rgt, rank))
+                await event.client(EditAdminRequest(x, user, rgt, rank))
                 i += 1
-                await cat.edit(f"**Promoting User in :**  `{i}` Chats...")
+                await event.edit(f"**Promoting User in :**  `{i}` Chats...")
             except:
                 pass
     else:
-        await cat.edit(f"**Reply to a user !!**")
-    await cat.edit(
+        await event.edit(f"**Reply to a user !!**")
+    await event.edit(
         f"[{user.first_name}](tg://user?id={user.id}) **Was Promoted Globally In** `{i}` **Chats !!**"
     )
-    await catevent.client.send_message(
+    await event.client.send_message(
         BOTLOG_CHATID,
         f"#GPROMOTE \n\n**Globally Promoted User :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`",
     )
@@ -170,34 +170,34 @@ async def _(catevent):
         ],
     },
 )
-async def _(catevent):
+async def _(event):
     i = 0
-    await catevent.get_sender()
-    me = await catevent.client.get_me()
-    cat = await eor(legendevent, "`Demoting Globally...`")
+    await event.get_sender()
+    me = await event.client.get_me()
+    event = await eor(event, "`Demoting Globally...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    if catevent.is_private:
-        user = catevent.chat
-        rank = catevent.pattern_match.group(1)
+    if event.is_private:
+        user = event.chat
+        rank = event.pattern_match.group(1)
     else:
-        catevent.chat.title
+        event.chat.title
     try:
-        user, rank = await get_full_user(catevent)
+        user, rank = await get_full_user(event)
     except:
         pass
     if me == user:
-        await cat.edit("You can't Demote yourself !!")
+        await event.edit("You can't Demote yourself !!")
         return
     try:
         if not rank:
-            rank = "cat"
+            rank = "event"
     except:
-        return await cat.edit("**ERROR !!**")
+        return await event.edit("**ERROR !!**")
     if user:
         telchanel = [
             d.entity.id
-            for d in await catevent.client.get_dialogs()
+            for d in await event.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         rgt = ChatAdminRights(
@@ -210,17 +210,17 @@ async def _(catevent):
         )
         for x in telchanel:
             try:
-                await catevent.client(EditAdminRequest(x, user, rgt, rank))
+                await event.client(EditAdminRequest(x, user, rgt, rank))
                 i += 1
-                await cat.edit(f"**Demoting Globally In Chats :** `{i}`")
+                await event.edit(f"**Demoting Globally In Chats :** `{i}`")
             except:
                 pass
     else:
-        await cat.edit(f"**Reply to a user !!**")
-    await cat.edit(
+        await event.edit(f"**Reply to a user !!**")
+    await event.edit(
         f"[{user.first_name}](tg://user?id={user.id}) **Was Demoted Globally In** `{i}` **Chats !!**"
     )
-    await catevent.client.send_message(
+    await event.client.send_message(
         BOTLOG_CHATID,
         f"#GDEMOTE \n\n**Globally Demoted :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`",
     )
