@@ -7,7 +7,6 @@ from ..core.managers import edit_or_reply
 from ..helpers.functions import age_verification
 from ..helpers.utils import reply_id
 from ..sql_helper.globals import addgvar, gvarstatus
-from . import  useless
 from userbot import catub
 
 plugin_category = "extra"
