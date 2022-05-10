@@ -107,12 +107,12 @@ async def bot_start(event):
             start_msg = f"Hey! 👤{mention},\
                         \nI am {my_mention}'s assistant bot.\
                         \nYou can contact to my master from here.\
-                        \n\nPowered by Aditya)"
+                        \n\nPowered by ηєαя⚘)"
         buttons = [
             (
-                Button.url("Aditya"),
+                Button.url("ηєαя⚘"),
                 Button.url(
-                    "Aditya",
+                    "ηєαя⚘",
                 ),
             )
         ]
